@@ -1,6 +1,7 @@
 <?php
 require_once("./conf/conf.php");
 require_once("./models/projectModel.php");
+require_once("./models/pictureModel.php");
 class ProjectController
 {
     public function readAll() : array
@@ -15,6 +16,30 @@ class ProjectController
         $result = $statement->fetchAll(PDO::FETCH_CLASS, "ProjectModel");
         return $result;
     }
+
+    public function readOne(int $id): ProjectModel
+    {
+        global $pdo;
+         // Requête de récupération du projet
+        $sql = "SELECT * FROM project WHERE id_project = :id ";   //Paramètre nommé
+        $statement = $pdo->prepare($sql);
+        $statement->bindParam(":id",$id, PDO::PARAM_INT).
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_CLASS, "ProjectModel");
+        $result= $statement->fetch();
+
+        // Requête de récupération des images
+        $sql = "SELECT * FROM picture WHERE id_project = :id";
+        $statement = $pdo->prepare($sql);
+        $statement->bindParam(":id",$id, PDO::PARAM_INT).
+        $statement->execute();
+        $pictures = $statement->fetchAll(PDO::FETCH_CLASS, "PictureModel");
+
+        $result->pictures = $pictures;
+
+        return $result;
+    }
 }
+
 
 ?>

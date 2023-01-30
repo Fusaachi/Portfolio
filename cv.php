@@ -4,14 +4,14 @@
 // require(controller/...)
 
 // Définition de la constante du titre de la page, que nous utilisons dans le head
-define("PAGE_TITLE", "Accueil");
+define("PAGE_TITLE", "CV");
 
 ?>
 <?php include ("./assets/inc/head.php") ?>
 <?php include ("./assets/inc/header.php") ?>
 <main>
     <div>
-        <h1>Présentation</h1>
+        <h1>Curiculum vitae</h1>
     </div>
 </main>
 

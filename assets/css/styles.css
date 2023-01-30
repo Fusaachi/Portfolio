@@ -1,0 +1,23 @@
+/*header*/
+
+.navbar {background-color: black; }
+nav .navbar-nav li a{
+    color: #FFC90E !important; font-size: 20px;
+    }
+nav .navbar-nav li a:hover{color: gold !important;}
+
+/*footer*/
+footer {background-color: black;}
+
+footer ul{ border-bottom:  2px solid #FFC90E; }
+
+.logo{max-height: 40px;max-width: 40px ;}
+
+footer p{color:#FFC90E !important; text-align: center;}
+
+.detail{text-decoration: none; color :grey; }
+
+.detail:hover{text-decoration: underline; color : black}
+
+.acard{text-align: right; padding-top: 7px;}
+

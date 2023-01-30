@@ -18,31 +18,33 @@ define("PAGE_TITLE", "Projets");
 <?php include ("./assets/inc/header.php") ?>
 
 <main>
-   
-    
-    
-    
-    
-  
-    <h1 class="text-center">Liste des projets</h1>
-
-    <?php foreach ($projects as $project)
-    {
+    <h1 class="text-center m-5">Liste des projets</h1>
+    <div class="container d-flex">
+      <div class="row align-items-center">
+        <?php foreach ($projects as $project)
+      {
         ?>
-     
-        <div class="card text-center" style="width: 18rem;">
-        <img class="card-img-top" src="./assets/img/projects/<?=$project->cover?>" alt="">
-        <div class="card-body">
-          <h5 class="card-title"><?= $project->name ?></h5>
-          <p class="card-text"><?= $project->description ?> </p>
-          <a href=<?= $project->link_git ?> class="btn btn-primary">Lien Github</a>
-          <a href=<?= $project->link_site ?> class="btn btn-primary">Lien Site</a>
+        <div class="col">
+          <div class="card text-center" style="width: 18rem;">
+            <img class="card-img-top" src="./assets/img/projects/<?=$project->cover?>" alt="">
+            <div class="card-body">
+              <h5 class="card-title"><?= $project->name ?></h5>
+              <p class="card-text"><?= $project->description ?> </p>
+              <a href=<?= $project->link_git ?> class="btn btn-primary">Lien Github</a>
+              <a href=<?= $project->link_site ?> class="btn btn-primary">Lien Site</a>
+              <br>
+              <div class="acard">
+                <a class="detail" href="./projetDetail.php?id=<?=$project->id_project?>">Détail ></a>
+              </div>
+            </div>
+          </div>
         </div>
+        <?php
+      }
+      ?> 
       </div>
-      <?php
-    }
-    ?>
-    
+   
+    </div>
 </main>
 
 <?php include ("./assets/inc/footer.php") ?>

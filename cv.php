@@ -11,7 +11,7 @@ define("PAGE_TITLE", "CV");
 <?php include ("./assets/inc/header.php") ?>
 <main>
     <div>
-        <h1>Curiculum vitae</h1>
+        <h1 class="text-center">Curiculum vitae</h1>
     </div>
 </main>
 

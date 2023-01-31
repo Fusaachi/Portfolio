@@ -12,7 +12,7 @@ $project = $controller->readOne($_GET["id"]);
 
 
 // Définition de la constante du titre de la page, que nous utilisons dans le head
-define("PAGE_TITLE", "DETAILS");
+define("PAGE_TITLE", "Détails");
 
 ?>
 <?php include ("./assets/inc/head.php") ?>
@@ -21,10 +21,10 @@ define("PAGE_TITLE", "DETAILS");
     <div class="text-center">
         <h1>Détails du projet <br> <?= $project->name ?> </h1>
 
-        <div class="container">
-            <div class="row">
+        <div class="container ">
+            <div class="row ">
                 <div class="col">
-                    <div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">
+                    <div id="carouselDetail" class="carousel slide" data-bs-ride="carousel">
                         
                         <div class="carousel-inner">
 
@@ -32,7 +32,7 @@ define("PAGE_TITLE", "DETAILS");
                             ?>
 
                             <div class="carousel-item <?= ($key == 0 ? 'active' : '')?> ">
-                                <img src="./assets/img/projects/<?=$picture->path ?>" alt="<?=$picture->alt?>" class="imgcr d-block w-100">
+                                <img src="../assets/img/projects/<?=$picture->path ?>" alt="<?=$picture->alt?>" class="imgcr d-block w-100">
                                 <div class="carousel-caption d-none d-md-block">
                                     <p><?=$picture->caption ?></p>
                                 </div>
@@ -42,19 +42,27 @@ define("PAGE_TITLE", "DETAILS");
                             } 
                             ?>
 
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                            <button class="carousel-control-prev " type="button" data-bs-target="#carouselDetail" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
+                                <span class="visually-hidden ">Previous</span>
                             </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselDetail" data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Next</span>
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    
+                <div class="col my-auto">
+                    <h6> Description </h6>
+                    <p><?= $project->description ?></p>
+                    <p>Créer le : <?= $project->displayDateStart() ?> </p>
+                    <?php if(isset($projet->date_end)) { ?>
+                        <p> Fini le :
+                        <?= $project->displayDateEnd() ?>
+                        <?php } ?></p>
+                        <a href= <?= $project->link_git ?> class="btn btnProject">Lien Github</a>
+                        <a href=<?= $project->link_site ?> class="btn btnProject">Lien Site</a>                  
                 </div>
             </div>
         </div>

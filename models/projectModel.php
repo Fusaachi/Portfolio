@@ -15,8 +15,14 @@ class ProjectModel
 
 
 
-    // public function displayDateStart():string
-    // {
-    //     $dateTime =DateTime::createFromFormat("Y-m-d", $this->da)
-    // }
+    public function displayDateStart(): string {
+        $datetime = DateTime::createFromFormat("Y-m-d", $this->date_start);
+        return $datetime->format("d-m-Y");
+    }
+
+    public function displayDateEnd(): string {
+        $datetime = DateTime::createFromFormat("Y-m-d", $this->date_end);
+        return $datetime->format("d-m-Y");
+    }
 }
+?>

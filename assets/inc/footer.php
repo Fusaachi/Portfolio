@@ -1,7 +1,7 @@
         <footer class="py-3 my-4 mb-0">
             <ul class="nav justify-content-center  pb-3 mb-3">
-                <li class="nav-item px-2"><a href="https://github.com/Fusaachi"><img class="logo" src="./assets/img/footer/git-hub.png" alt="lien Git"></a></li>
-                <li class="nav-item"><a href="https://www.linkedin.com/in/pauline-giroux-440b731b7/"><img class="logo" src="./assets/img/footer/linkedin.png" alt="lien linkedin"></a></li>
+                <li class="nav-item px-2"><a href="https://github.com/Fusaachi"><img class="logo" src="/portfolio/assets/img/footer/git-hub.png" alt="lien Git"></a></li>
+                <li class="nav-item"><a href="https://www.linkedin.com/in/pauline-giroux-440b731b7/"><img class="logo" src="/portfolio/assets/img/footer/linkedin.png" alt="lien linkedin"></a></li>
             </ul>
             <p>Pauline GIROUX, 2023</p>
 

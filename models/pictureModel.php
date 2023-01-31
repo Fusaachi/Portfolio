@@ -9,4 +9,3 @@ Class PictureModel
     public int $id_project;
 }
 ?>
-?>

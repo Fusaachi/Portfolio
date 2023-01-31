@@ -11,7 +11,7 @@ define("PAGE_TITLE", "Accueil");
 <?php include ("./assets/inc/header.php") ?>
 <main>
     <div>
-        <h1>Présentation</h1>
+        <h1 class="text-center">Présentation</h1>
     </div>
 </main>
 

@@ -6,8 +6,7 @@ require("./controllers/skillController.php");
 // Instanciation de notre controller
 $controller = new SkillController;
 
-// TODO: récupérer les compétences
-// $skills = $controller->...
+$skills = $controller->readAll();
 
 // Définition de la constante du titre de la page, que nous utilisons dans le head
 define("PAGE_TITLE", "Compétences");

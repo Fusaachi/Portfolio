@@ -1,6 +1,6 @@
 <body>
     <header>
-        <nav class="navbar navbar-expand" >
+        <nav id ="headerNav"class="navbar navbar-expand" >
             <div class="container-fluid">
                 <a class="navbar-brand" href="#"><img src="/portfolio/assets/img/port.png"alt="Portfolio"> </a>
                 <div class="collapse navbar-collapse" >

@@ -19,8 +19,7 @@ define("PAGE_TITLE", "Détails");
 <?php include ("./assets/inc/header.php") ?>
 <main>
     <div class="text-center">
-        <h1>Détails du projet <br> <?= $project->name ?> </h1>
-
+        <h1 class="mt-4 mb-5">Détails du projet :<br> <?= $project->name ?> </h1>
         <div class="container ">
             <div class="row ">
                 <div class="col">
@@ -32,7 +31,7 @@ define("PAGE_TITLE", "Détails");
                             ?>
 
                             <div class="carousel-item <?= ($key == 0 ? 'active' : '')?> ">
-                                <img src="../assets/img/projects/<?=$picture->path ?>" alt="<?=$picture->alt?>" class="imgcr d-block w-100">
+                                <img src="../assets/img/projects/<?=$picture->path ?>" alt="<?=$picture->alt?>" class="carouselPicture ">
                                 <div class="carousel-caption d-none d-md-block">
                                     <p><?=$picture->caption ?></p>
                                 </div>
@@ -65,6 +64,9 @@ define("PAGE_TITLE", "Détails");
                         <a href=<?= $project->link_site ?> class="btn btnProject">Lien Site</a>                  
                 </div>
             </div>
+        </div>
+        <div class="container mt-5 mb-3">
+        <a href= "/portfolio/projets"class="btn btnProject">Retour</a>
         </div>
    
 </main>

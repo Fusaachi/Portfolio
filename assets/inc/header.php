@@ -14,6 +14,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/portfolio/cv"> Mon CV</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/portfolio/competences"> Mes Compétences</a>
+                        </li>
                     </ul>
                     </div>
             </div>

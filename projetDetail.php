@@ -55,13 +55,23 @@ define("PAGE_TITLE", "Détails");
                 <div class="col my-auto">
                     <h6> Description </h6>
                     <p><?= $project->description ?></p>
-                    <p>Créer le : <?= $project->displayDateStart() ?> </p>
+                    <p>Créé le : <?= $project->displayDateStart() ?> </p>
                     <?php if(isset($projet->date_end)) { ?>
                         <p> Fini le :
                         <?= $project->displayDateEnd() ?>
                         <?php } ?></p>
+                        <div class="row justify-content-center mb-4 ">
+                            <p class="mb-1">Compétences utilisées:</p>
+                            <?php foreach($project->skills as $skill)
+                                { ?>
+                                <div  class="col-2 ">
+                                    <li class="list-unstyled" ><i class="bi bi-rocket-takeoff"></i> <?= $skill->name ?></li>
+                                </div>
+                           <?php }?>
+                        </div>   
                         <a href= <?= $project->link_git ?> class="btn btnProject">Lien Github</a>
-                        <a href=<?= $project->link_site ?> class="btn btnProject">Lien Site</a>                  
+                        <a href=<?= $project->link_site ?> class="btn btnProject">Lien Site</a>
+                                      
                 </div>
             </div>
         </div>

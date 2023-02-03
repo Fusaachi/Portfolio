@@ -18,11 +18,25 @@ define("PAGE_TITLE", "Compétences");
 
 <main>
     <!-- TODO: afficher les compétences grâce à une boucle -->
+    <div class="container mt-5 mb-5">
+        <div class="row">
+        <?php foreach($skills as $skill){ ?>
+            <div class="col">
+                <div class="card text-center" style="width: 18rem;">
+                    <img class="card-img-top" src="./assets/img/skills/<?=$skill->picture?>" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $skill->name ?></h5>
+                        <p class="card-text cardProject ">
+                            <?= $skill->level ?> </p>
+                     </div>
+                </div>
+            </div>
+            <?php } ?>
+        </div>
+    </div>
 
-   <?php foreach($competences as $competence){ ?>
 
 
-   <?php } ?>
 </main>
 
 <?php include("./assets/inc/footer.php"); ?>

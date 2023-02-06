@@ -30,8 +30,8 @@ define("PAGE_TITLE", "Projets");
             <div class="card-body">
               <h5 class="card-title"><?= $project->name ?></h5>
               <p class="card-text cardProject "><?= $project->description ?> </p>
-              <a href= <?= $project->link_git ?> class="btn btn-primary">Lien Github</a>
-              <a href=<?= $project->link_site ?> class="btn btn-primary">Lien Site</a>
+              <a href= <?= $project->link_git ?> class="btn btnProject">Lien Github</a>
+              <a href=<?= $project->link_site ?> class="btn btnProject">Lien Site</a>
               <br>
               <div class="acard">
                 <a class="detail" href="/portfolio/projet/<?=$project->id_project?>">Détail ></a>

@@ -211,3 +211,9 @@ footer p{
 #about img{
     max-height: 15%;
 }
+
+.inputLogin
+{
+height: 30px !important;
+width: 300px;
+}

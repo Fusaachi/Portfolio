@@ -48,5 +48,56 @@ class AccountController
             "message" => "Compte utilisateur créé"
         ];
     }
+    public function login(string $email,string $password) 
+    {
+        global $pdo;
+
+        // Première étape : récupérer un compte utilisateur correspondant à cet email
+        $sql = " SELECT email, password
+        FROM account
+        WHERE email = :email";
+
+        $statement = $pdo->prepare($sql);
+        $statement->bindParam(":email", $email);
+        $statement->execute();
+        // Vérifions si au moins un compte à été trouvé
+        if($statement->rowCount() > 0)
+        {
+            // Deuxième étape : vérifier le mot de passe
+            $statement->setFetchMode(PDO::FETCH_CLASS, "AccountModel");
+            $account = $statement->fetch();
+            if(password_verify($password, $account->password))
+            {
+                // Bravo : le mot de passe est correct, la personne est connectée !
+                $_SESSION["email"] = $email;
+                header("Location: /portfolio/admin/index.php");
+                exit();
+            } else {
+                return [
+                    "success" => false,
+                    "message" => "Mot de passe incorrect"
+                ];
+            }
+        } else {
+            return [
+                "success" => false,
+                "message" => "Email incorrect"
+            ];
+        }
+    }
+
+    public function isLogged()
+    {
+        // Permet de vérifier qu'un utilisateur soit connecté afin d'accéder à l'interface d'Admin
+
+        if(isset($_SESSION["email"]))
+        {
+            // La personne est connectée !
+            return true;
+        }else{
+            // La personne n'est pas connectée
+            header("Location: /portfolio/admin/connexion.php");
+        }
+    }
 }
 ?>

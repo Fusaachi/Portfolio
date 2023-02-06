@@ -3,7 +3,7 @@
 // Commencer par l'appel du controller
 require("./controllers/projectController.php");
 
-// Instanciation de notre ccontroller
+// Instanciation de notre controller
 $controller = new ProjectController;
 
 

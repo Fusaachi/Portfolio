@@ -1,8 +1,16 @@
 <?php
 
+session_start();
+
 define("PAGE_TITLE", "Ajout d'une Compétence");
 
 require_once("../controllers/skillController.php");
+require_once("../controllers/accountController.php");
+
+
+$accountController = new AccountController;
+// Permet de vérifier que l'utilisateur soit connecté
+$accountController->isLogged();
 
 $skillController = new SkillController;
 

@@ -41,7 +41,7 @@ define("PAGE_TITLE", "Compétences");
                             <?php foreach($skill->projects as $project)
                                 { ?>
                                 
-                                <li class="list-unstyled" ><i class="bi bi-rocket-takeoff"></i><a class="detail" href="/portfolio/projet/<?=$project->id_project?>"> <?= $project->name ?></a</li>
+                                <li class="list-unstyled" ><i class="bi bi-rocket-takeoff"></i><a class="detail" href="/portfolio/projet/<?=$project->id_project?>"> <?= $project->name ?></a></li>
                                 
                            <?php }?>
                         </div>   

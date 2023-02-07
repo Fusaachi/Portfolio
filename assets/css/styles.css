@@ -217,3 +217,17 @@ footer p{
 height: 30px !important;
 width: 300px;
 }
+
+textarea {
+  vertical-align: middle;
+
+}
+
+select {
+  vertical-align: top;
+}
+
+input {
+  border-radius: 5px;
+  text-align: center;
+}

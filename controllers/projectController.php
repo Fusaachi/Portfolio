@@ -64,6 +64,33 @@ class ProjectController
         $statement->execute();
         $project->skills = $statement->fetchAll(PDO::FETCH_CLASS, "SkillModel");
     }
+
+    public function createProject(string $name, string $description, string $date_start, string $date_end, string $link_site, string $link_git, array $cover)
+    {
+        $image_name = time() . $cover["name"];
+        move_uploaded_file($cover["tmp_name"], __DIR__ . "/../assets/img/projects/" . $image_name);
+        global $pdo;
+
+        $sql = "INSERT INTO project( name, description, date_start, date_end, link_site, link_git, cover)
+                VALUES ( :name, :description, :date_start, :date_end, :link_site, :link_git, :cover)";
+
+        $statement = $pdo->prepare($sql);
+        $statement->bindParam(":name", $name);
+        $statement->bindParam(":description", $description);
+        $statement->bindParam(":date_start", $date_start);
+        $statement->bindParam(":date_end", $date_end);
+        $statement->bindParam(":link_site", $link_site);
+        $statement->bindParam(":link_git", $link_git);
+        $statement->bindParam(":cover", $image_name);
+
+        $statement->execute();
+
+        return [
+            "success" => true,
+            "message" => "Le projet a été créé"
+        ];
+    
+    }
 }
 
 

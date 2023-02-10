@@ -15,10 +15,10 @@ $skillController = new SkillController;
 
 $skills = $skillController->readAll();
 
-$projectController = new ProjectController;
-
 if(isset($_POST["submit"])){
-    $error = $projectController->createProject($_POST["name"], $_POST["description"], $_POST["date_start"], $_POST["date_end"],$_POST["link_site"],$_POST["link_git"],$_FILES["cover"]);
+    // Envoi des informations du formulaire pour créer un nouveau projet
+    $projectController = new ProjectController;
+    $projectController->createProject($_POST["name"], $_POST["description"], $_POST["date_start"], $_POST["date_end"],$_POST["link_site"],$_POST["link_git"],$_FILES["cover"],$_POST["skills"]);
 }
 
 ?>
@@ -27,6 +27,16 @@ if(isset($_POST["submit"])){
 
 
 <main class="container mt-5 mb-5">
+<h1 class="text-center mb-5"> Ajout d'un nouveau Projet</h1>
+    <?php 
+    if(isset($result)){
+        if($result["success"]){?>
+            <div class="alert alert-success"><?=$result["message"]?></div>
+       <?php } else {?>
+        <div class="alert alert-danger"><?=$result["message"]?></div>
+     <?php  }
+    }
+    ?>
 
     <form  action="#" method="POST" enctype="multipart/form-data">
         <div class="d-inline ">

@@ -65,10 +65,37 @@ class ProjectController
         $project->skills = $statement->fetchAll(PDO::FETCH_CLASS, "SkillModel");
     }
 
-    public function createProject(string $name, string $description, string $date_start, string $date_end, string $link_site, string $link_git, array $cover)
-    {
-        $image_name = time() . $cover["name"];
-        move_uploaded_file($cover["tmp_name"], __DIR__ . "/../assets/img/projects/" . $image_name);
+    public function createProject(string $name, string $description, string $date_start, string $date_end, string $link_site, string $link_git, array $cover, array $skills)
+    {   
+        if(strlen($name) > 255){
+            return [
+                "success" => false,
+                "message" => "Le nom du projet doit contenir 255 caractères maximum"
+            ];
+        }
+        if(strlen($link_site) > 50){
+            return [
+                "success" => false,
+                "message" => "Le lien du projet doit contenir 50 caractères maximum"
+            ];
+        }
+        if(strlen($link_git) > 50){
+            return [
+                "success" => false,
+                "message" => "Le lien git du projet doit contenir 50 caractères maximum"
+            ];
+        }
+
+        if(!in_array($cover["type"],["image/png", "image/jpeg", "image/webp"]))
+        {
+            return [
+                "success" => false,
+                "message" => "Formats d'image acceptés :  Png, Jpeg, Webp"
+            ];
+        }
+        
+        $cover_name = time() . $cover["name"];
+        move_uploaded_file($cover["tmp_name"], __DIR__ . "/../assets/img/projects/" . $cover_name);
         global $pdo;
 
         $sql = "INSERT INTO project( name, description, date_start, date_end, link_site, link_git, cover)
@@ -78,16 +105,41 @@ class ProjectController
         $statement->bindParam(":name", $name);
         $statement->bindParam(":description", $description);
         $statement->bindParam(":date_start", $date_start);
+
+        // Si la date est vide, donnons-lui la valeur null
+        $date_end = ($date_end =="" ? null : $date_end);
         $statement->bindParam(":date_end", $date_end);
+
+        $link_site = ($link_site =="" ? null : $link_site);
         $statement->bindParam(":link_site", $link_site);
+
+        $link_git = ($link_git =="" ? null : $link_git);
         $statement->bindParam(":link_git", $link_git);
-        $statement->bindParam(":cover", $image_name);
+
+        $statement->bindParam(":cover", $cover_name);
 
         $statement->execute();
 
+        // Récupérons l'ID du projet que nous venons d'insérer
+        $id_project = $pdo->lastInsertId();
+
+        // Insertion des compétences liées à ce projet
+        if(count($skills)>0) {
+            foreach($skills as $skill){
+                $sql="INSERT INTO skill_project (id_project,id_skill)
+                VALUES (:id_project, :id_skill)";
+                $statement = $pdo->prepare($sql);
+                $statement->bindParam(":id_project",$id_project);
+                $statement->bindParam(":id_skill",$skill);
+
+                $statement->execute();
+
+            }
+        }
+
         return [
             "success" => true,
-            "message" => "Le projet a été créé"
+            "message" => "Le projet". $name . " a été créé"
         ];
     
     }
